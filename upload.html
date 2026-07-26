@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Wedding Admin Upload</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e293b);
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+color:white;
+
+}
+
+.container{
+
+width:100%;
+max-width:800px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+h1{
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+opacity:.75;
+
+margin-bottom:35px;
+
+}
+
+.drop-zone{
+
+border:3px dashed #d4af37;
+
+border-radius:20px;
+
+padding:60px 20px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.drop-zone.drag{
+
+background:rgba(212,175,55,.15);
+
+}
+
+.drop-zone h2{
+
+margin-bottom:10px;
+
+}
+
+.drop-zone p{
+
+opacity:.7;
+
+}
+
+input[type=file]{
+
+display:none;
+
+}
+
+.choose{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:12px 28px;
+
+background:#d4af37;
+
+color:black;
+
+border-radius:40px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+.preview{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+
+gap:15px;
+
+margin-top:35px;
+
+}
+
+.item{
+
+background:rgba(255,255,255,.08);
+
+border-radius:15px;
+
+padding:10px;
+
+}
+
+.item img{
+
+width:100%;
+
+height:130px;
+
+object-fit:cover;
+
+border-radius:10px;
+
+}
+
+.name{
+
+font-size:13px;
+
+margin-top:8px;
+
+white-space:nowrap;
+
+overflow:hidden;
+
+text-overflow:ellipsis;
+
+}
+
+.upload{
+
+width:100%;
+
+margin-top:35px;
+
+padding:15px;
+
+border:none;
+
+border-radius:50px;
+
+background:#d4af37;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+progress{
+
+width:100%;
+
+height:10px;
+
+margin-top:20px;
+
+display:none;
+
+}
+
+.status{
+
+text-align:center;
+
+margin-top:15px;
+
+color:#7CFC00;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Wedding Gallery Admin</h1>
+
+<p class="subtitle">
+Upload Photos to assets/images
+</p>
+
+<div class="drop-zone" id="drop">
+
+<h2>📷 Drag & Drop Images</h2>
+
+<p>or</p>
+
+<label class="choose" for="photos">
+
+Choose Images
+
+</label>
+
+<input
+type="file"
+id="photos"
+multiple
+accept="image/*">
+
+</div>
+
+<div class="preview" id="preview"></div>
+
+<progress id="progress" value="0" max="100"></progress>
+
+<button class="upload" id="upload">
+
+Upload Images
+
+</button>
+
+<div class="status" id="status"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const input=document.getElementById("photos");
+
+const preview=document.getElementById("preview");
+
+const drop=document.getElementById("drop");
+
+const progress=document.getElementById("progress");
+
+const status=document.getElementById("status");
+
+let files=[];
+
+function showPreview(){
+
+preview.innerHTML="";
+
+files.forEach(file=>{
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+preview.innerHTML+=`
+<div class="item">
+<img src="${e.target.result}">
+<div class="name">${file.name}</div>
+</div>
+`;
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+input.onchange=()=>{
+
+files=[...input.files];
+
+showPreview();
+
+};
+
+drop.ondragover=e=>{
+
+e.preventDefault();
+
+drop.classList.add("drag");
+
+};
+
+drop.ondragleave=()=>{
+
+drop.classList.remove("drag");
+
+};
+
+drop.ondrop=e=>{
+
+e.preventDefault();
+
+drop.classList.remove("drag");
+
+files=[...e.dataTransfer.files];
+
+showPreview();
+
+};
+
+document.getElementById("upload").onclick=async()=>{
+
+if(files.length===0){
+
+alert("Select images first");
+
+return;
+
+}
+
+const form=new FormData();
+
+files.forEach(f=>form.append("photos",f));
+
+progress.style.display="block";
+
+const xhr=new XMLHttpRequest();
+
+xhr.upload.onprogress=e=>{
+
+const percent=Math.round((e.loaded/e.total)*100);
+
+progress.value=percent;
+
+};
+
+xhr.onload=()=>{
+
+status.innerHTML="✅ Upload Completed";
+
+};
+
+xhr.open("POST","/upload/photos");
+
+xhr.send(form);
+
+};
+
+</script>
+
+</body>
+</html>
+```

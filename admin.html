@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Admin Panel</title>
+
+<link rel="stylesheet" href="css/admin.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Wedding Gallery Admin</h1>
+        <p>Manage your wedding memories</p>
+
+        <div class="upload-box">
+
+            <div class="upload-icon">📷</div>
+
+            <h2>Upload Photos</h2>
+
+            <input type="file" id="photos" multiple accept="image/*">
+
+            <label for="photos" class="btn">
+                Choose Images
+            </label>
+
+            <div id="photoList"></div>
+
+        </div>
+
+        <div class="upload-box">
+
+            <div class="upload-icon">🎥</div>
+
+            <h2>Upload Videos</h2>
+
+            <input type="file" id="videos" multiple accept="video/*">
+
+            <label for="videos" class="btn">
+                Choose Videos
+            </label>
+
+            <div id="videoList"></div>
+
+        </div>
+
+        <button class="upload-btn">
+            Upload
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>
