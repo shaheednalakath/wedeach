@@ -25,7 +25,28 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             name: "Photo 4",
             src: "assets/images/p4.jpeg"
+        },
+        {
+            name: "Photo 5",
+            src: "assets/images/p5.jpeg"
+        },
+         {
+            name: "Photo 6",
+            src: "assets/images/p6.jpeg"
+         },
+        {
+            name: "Photo 7",
+            src: "assets/images/p7.jpeg"
+        },
+        {
+            name: "Photo 8",
+            src: "assets/images/p8.jpeg"
+        },
+        {
+            name: "Photo 9",
+            src: "assets/images/p9.jpeg"
         }
+   
     ];
 
     const gallery = document.querySelector("[data-masonry]");
