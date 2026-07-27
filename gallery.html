@@ -17,22 +17,17 @@
 
     <!-- Gallery -->
     <section class="section" style="padding-top:0;">
-
         <div class="container">
 
             <div class="gallery-toolbar">
 
                 <div class="search-field">
-
                     <svg viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         stroke-width="1.8">
-
                         <circle cx="11" cy="11" r="7"/>
-
                         <path d="M21 21l-4.3-4.3"/>
-
                     </svg>
 
                     <input
@@ -40,7 +35,6 @@
                         data-gallery-search
                         placeholder="Search memories..."
                         aria-label="Search Photos">
-
                 </div>
 
                 <span class="gallery-count" data-gallery-count>
@@ -49,22 +43,70 @@
 
             </div>
 
-            <!-- Gallery Grid -->
-            <div
-                class="masonry"
+            <div class="masonry"
                 data-masonry
                 aria-live="polite">
             </div>
 
-            <!-- Empty State -->
-            <div
-                class="state-msg"
+            <div class="state-msg"
                 data-gallery-state
                 style="display:none;">
             </div>
 
         </div>
-
     </section>
 
 </main>
+
+<!-- ===================== Lightbox ===================== -->
+<div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <div class="lightbox-stage">
+    <img data-lightbox-image src="" alt="">
+    <p class="lightbox-caption" data-lightbox-caption></p>
+  </div>
+
+  <button class="lightbox-close" data-lightbox-close aria-label="Close photo viewer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </svg>
+  </button>
+
+  <button class="lightbox-nav lightbox-prev" data-lightbox-prev aria-label="Previous photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M15 6l-6 6 6 6"/>
+    </svg>
+  </button>
+
+  <button class="lightbox-nav lightbox-next" data-lightbox-next aria-label="Next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M9 6l6 6-6 6"/>
+    </svg>
+  </button>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="index.html" class="brand">
+      <span class="seal" aria-hidden="true">S&amp;S</span>
+      Shaheed &amp; Shahana
+    </a>
+
+    <ul class="footer-social">
+      <li><a href="#" aria-label="Instagram">...</a></li>
+      <li><a href="#" aria-label="Facebook">...</a></li>
+      <li><a href="#" aria-label="WhatsApp">...</a></li>
+    </ul>
+
+    <p class="footer-fine">
+      &copy; <span data-year></span> Shaheed &amp; Shahana.
+      Made with <span class="made-with">&hearts;</span>
+    </p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/gallery.js"></script>
+
+</body>
+</html>
