@@ -32,32 +32,75 @@
 </header>
 
 <main>
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">Captured Moments</p>
-      <h1 class="section-title">The Gallery</h1>
-      <p class="section-sub" style="margin-inline:auto;">Every frame we could gather, from the first laugh to the last dance.</p>
-    </div>
-  </section>
 
-  <section class="section" style="padding-top:0;">
-    <div class="container">
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">Captured Moments</p>
 
-      <div class="gallery-toolbar">
-        <div class="search-field">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <input type="search" data-gallery-search placeholder="Search photos by name…" aria-label="Search photos by name">
+            <h1 class="section-title">
+                Our Beautiful Gallery
+            </h1>
+
+            <p class="section-sub" style="margin-inline:auto;">
+                Every picture tells a story. Every smile holds a memory. Relive our beautiful journey through these cherished moments.
+            </p>
         </div>
-        <span class="gallery-count" data-gallery-count>Loading…</span>
-      </div>
+    </section>
 
-      <div class="masonry" data-masonry aria-live="polite"></div>
-      <div class="state-msg" data-gallery-state style="display:none;"></div>
+    <!-- Gallery -->
+    <section class="section" style="padding-top:0;">
 
-    </div>
-  </section>
+        <div class="container">
+
+            <div class="gallery-toolbar">
+
+                <div class="search-field">
+
+                    <svg viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8">
+
+                        <circle cx="11" cy="11" r="7"/>
+
+                        <path d="M21 21l-4.3-4.3"/>
+
+                    </svg>
+
+                    <input
+                        type="search"
+                        data-gallery-search
+                        placeholder="Search memories..."
+                        aria-label="Search Photos">
+
+                </div>
+
+                <span class="gallery-count" data-gallery-count>
+                    0 Photos
+                </span>
+
+            </div>
+
+            <!-- Gallery Grid -->
+            <div
+                class="masonry"
+                data-masonry
+                aria-live="polite">
+            </div>
+
+            <!-- Empty State -->
+            <div
+                class="state-msg"
+                data-gallery-state
+                style="display:none;">
+            </div>
+
+        </div>
+
+    </section>
+
 </main>
-
 <!-- ===================== Lightbox ===================== -->
 <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <div class="lightbox-stage">
