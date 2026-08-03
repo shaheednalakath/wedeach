@@ -1,13 +1,18 @@
-name: first workflow
+name: First Workflow
+
 on:
   push:
+
 jobs:
- print-jobs:
+  print-jobs:
     runs-on: ubuntu-latest
+
     steps:
       - name: Print welcome message
         run: echo "Welcome to the first workflow"
-      -name: print thanku
-        run: echo "Thank you for using GitHub Actions" 
-      -name: present dir
-        run: pwd  
+
+      - name: Print thank you
+        run: echo "Thank you for using GitHub Actions"
+
+      - name: Present directory
+        run: pwd
