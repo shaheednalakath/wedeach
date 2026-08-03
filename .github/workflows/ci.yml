@@ -7,9 +7,7 @@ jobs:
     steps:
       - name: Print welcome message
         run: echo "Welcome to the first workflow"
-
       -name: print thanku
         run: echo "Thank you for using GitHub Actions" 
-
       -name: present dir
         run: pwd  
